@@ -107,10 +107,10 @@ def calculate_resistances(num_notes, edges):
     for k in range(num_notes):
         for i in range(num_notes):
             for j in range(num_notes):
-                if i != j:
+                if i != j and j != k and i != k:
                     try:
-                        buf = 1 / (distances[i][k] + distances[k][j])
-                        distances[i][j] = 1 / (1 / distances[i][j] + buf)
+                        distances[i][j] = 1 / (1 / distances[i][j] +
+                                               1 / (distances[i][k] + distances[k][j]))
                     except ZeroDivisionError:
                         distances[i][j] = inf
 
