@@ -107,10 +107,14 @@ def calculate_resistances(num_notes, edges):
     for k in range(num_notes):
         for i in range(num_notes):
             for j in range(num_notes):
+                # Here is an error!
+                # 'k' is a recursion step number, but not table index.
+                # So it shoud be processed in case of k==j or k==i
                 if i != j and j != k and i != k:
                     try:
                         distances[i][j] = 1 / (1 / distances[i][j] +
                                                1 / (distances[i][k] + distances[k][j]))
+                                               # PEP-8: Line too long
                     except ZeroDivisionError:
                         distances[i][j] = inf
 
