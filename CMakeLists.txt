@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.1)
+set(CMAKE_VERBOSE_MAKEFILE on)
+SET(PYTHON_INCLUDE_DIRS "C:\\Python34\\include")
+SET(PYTHON_LIBRARIES "C:\\Python34\\libs")
+find_package(PythonLibs)
+include_directories(${PYTHON_INCLUDE_DIRS})
+python_add_module(cpp_module cpp_module.cpp)
+target_link_libraries(cpp_module ${PYTHON_LIBRARIES})
